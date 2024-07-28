@@ -1,0 +1,30 @@
+document.getElementById('processButton').addEventListener('click', () => {
+    const action = document.getElementById('actionSelect').value;
+    const inputText = document.getElementById('inputText').value;
+    const resultText = document.getElementById('resultText');
+    resultText.value = action === 'encrypt' ? encrypt(inputText) : decrypt(inputText);
+});
+
+document.getElementById('copyButton').addEventListener('click', () => {
+    const resultText = document.getElementById('resultText');
+    resultText.select();
+    document.execCommand('copy');
+});
+
+function encrypt(text) {
+    return text
+        .replace(/e/g, 'enter')
+        .replace(/i/g, 'imes')
+        .replace(/a/g, 'ai')
+        .replace(/o/g, 'ober')
+        .replace(/u/g, 'ufat');
+}
+
+function decrypt(text) {
+    return text
+        .replace(/enter/g, 'e')
+        .replace(/imes/g, 'i')
+        .replace(/ai/g, 'a')
+        .replace(/ober/g, 'o')
+        .replace(/ufat/g, 'u');
+}
